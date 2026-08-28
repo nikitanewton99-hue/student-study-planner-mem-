@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Study Session</title>
+</head>
+
+<body>
+
+    <h1>Edit Study Session</h1>
+
+    <p>Update your study session details.</p>
+
+    <form method="POST">
+
+        <label for="subject">Subject:</label>
+        <br>
+
+        <select id="subject" name="subject" required>
+            <option value="">Select Subject</option>
+            <option value="Python" {% if study["subject"] == "Python" %}selected{% endif %}>Python</option>
+            <option value="Mathematics" {% if study["subject"] == "Mathematics" %}selected{% endif %}>Mathematics</option>
+            <option value="Physics" {% if study["subject"] == "Physics" %}selected{% endif %}>Physics</option>
+            <option value="Web Development" {% if study["subject"] == "Web Development" %}selected{% endif %}>Web Development</option>
+        </select>
+
+        <br><br>
+
+        <label for="topic">Study Topic:</label>
+        <br>
+
+        <input
+            type="text"
+            id="topic"
+            name="topic"
+            value="{{ study['topic'] }}"
+            required
+        >
+
+        <br><br>
+
+        <label for="date">Study Date:</label>
+        <br>
+
+        <input
+            type="date"
+            id="date"
+            name="date"
+            value="{{ study['date'] }}"
+            required
+        >
+
+        <br><br>
+
+        <label for="time">Start Time:</label>
+        <br>
+
+        <input
+            type="time"
+            id="time"
+            name="time"
+            value="{{ study['time'] }}"
+            required
+        >
+
+        <br><br>
+
+        <label for="duration">Study Duration (hours):</label>
+        <br>
+
+        <input
+            type="number"
+            id="duration"
+            name="duration"
+            min="0.5"
+            max="12"
+            step="0.5"
+            value="{{ study['duration'] }}"
+            required
+        >
+
+        <br><br>
+
+        <button type="submit">Update Study Session</button>
+
+    </form>
+
+    <br>
+
+    <a href="/planner">
+        <button type="button">Cancel</button>
+    </a>
+
+</body>
+
+</html>

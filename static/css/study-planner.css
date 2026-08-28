@@ -1,0 +1,240 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f5f7;
+    color: #222;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 45px 30px;
+}
+
+h1 {
+    font-size: 42px;
+    margin: 0 0 10px;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 17px;
+    margin-bottom: 28px;
+}
+
+nav {
+    display: flex;
+    gap: 28px;
+    padding: 18px 0;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 30px;
+}
+
+nav a {
+    color: #222;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Statistics */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 35px;
+}
+
+.stat-card {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+}
+
+.stat-card h3 {
+    margin: 0 0 12px;
+    color: #555;
+    font-size: 16px;
+}
+
+.stat-number {
+    font-size: 34px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.stat-card span {
+    color: #888;
+    font-size: 14px;
+}
+
+/* Study sessions */
+
+.section {
+    background: white;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.section-header h2 {
+    margin: 0 0 5px;
+    font-size: 28px;
+}
+
+.section-header p {
+    margin: 0;
+    color: #777;
+}
+
+.add-button,
+.button {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 7px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+}
+
+.add-button {
+    background: #222;
+    color: white;
+}
+
+.add-button:hover {
+    background: #444;
+}
+
+/* Individual session */
+
+.session-card {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 22px;
+    margin-bottom: 18px;
+}
+
+.session-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.session-header h3 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.status {
+    background: #eee;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+.session-card p {
+    color: #555;
+}
+
+.session-details {
+    display: flex;
+    gap: 25px;
+    color: #666;
+    margin: 18px 0;
+    font-size: 14px;
+}
+
+.session-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.session-buttons form {
+    margin: 0;
+}
+
+.edit-button {
+    background: #222;
+    color: white;
+}
+
+.complete-button {
+    background: #26734d;
+    color: white;
+}
+
+.delete-button {
+    background: #b00020;
+    color: white;
+}
+
+.button:hover {
+    opacity: 0.85;
+}
+
+/* Empty state */
+
+.empty-state {
+    text-align: center;
+    padding: 50px 20px;
+    border: 2px dashed #ddd;
+    border-radius: 12px;
+}
+
+.empty-icon {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.empty-state h3 {
+    margin: 10px 0;
+}
+
+.empty-state p {
+    color: #777;
+    margin-bottom: 22px;
+}
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .session-details {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .session-buttons {
+        flex-wrap: wrap;
+    }
+}

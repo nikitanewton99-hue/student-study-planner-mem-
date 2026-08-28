@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Study Goals</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6f8;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        h1 {
+            font-size: 42px;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        textarea {
+            min-height: 90px;
+            resize: vertical;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            background: #222;
+            color: white;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        button:hover {
+            background: #444;
+        }
+
+        .goal {
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+
+        .progress {
+            color: #666;
+        }
+
+        .error {
+            background: #ffe5e5;
+            color: #b00020;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 10px;
+            color: #222;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Study Goals</h1>
+
+    <p class="subtitle">
+        Set your academic goals and track your progress.
+    </p>
+
+    <!-- ADD GOAL -->
+
+    <div class="card">
+
+        <h2>➕ Add New Goal</h2>
+
+        {% if error %}
+            <div class="error">
+                {{ error }}
+            </div>
+        {% endif %}
+
+        <form action="/goals" method="POST">
+
+            <label>Goal Title</label>
+            <input
+                type="text"
+                name="title"
+                placeholder="Example: Complete Python Module"
+                required
+            >
+
+            <label>Description</label>
+            <textarea
+                name="description"
+                placeholder="Describe what you want to achieve..."
+                required
+            ></textarea>
+
+            <label>Target Study Hours</label>
+            <input
+                type="number"
+                name="target_hours"
+                min="1"
+                placeholder="Example: 20"
+                required
+            >
+
+            <button type="submit">
+                Add Goal
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <!-- EXISTING GOALS -->
+
+    <div class="card">
+
+        <h2>🎯 My Goals</h2>
+
+        {% if goals %}
+
+            {% for goal in goals %}
+
+                <div class="goal">
+
+                    <h3>{{ goal["title"] }}</h3>
+
+                    <p>
+                        {{ goal["description"] }}
+                    </p>
+
+                    <p>
+                        <strong>Target:</strong>
+                        {{ goal["target_hours"] }} hours
+                    </p>
+
+                                        <a href="/edit-goal/{{ goal['id'] }}">
+                        <button type="button">
+                            Edit Goal
+                        </button>
+                    </a>
+
+                                    </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <p>No study goals added yet.</p>
+
+        {% endif %}
+
+    </div>
+
+    <a class="back" href="/planner">
+        ← Back to Planner
+    </a>
+
+</div>
+
+</body>
+</html>

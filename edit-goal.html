@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Study Goal</title>
+</head>
+
+<body>
+
+    <h1>Edit Study Goal</h1>
+
+    <p>Update your study goal.</p>
+
+    <hr>
+
+    <form action="/edit-goal/{{ goal['id'] }}" method="POST">
+
+        <label for="title">Goal Title:</label>
+        <br>
+
+        <input
+            type="text"
+            id="title"
+            name="title"
+            value="{{ goal['title'] }}"
+            required
+        >
+
+        <br><br>
+
+        <label for="description">Description:</label>
+        <br>
+
+        <textarea
+            id="description"
+            name="description"
+            required
+        >{{ goal['description'] }}</textarea>
+
+        <br><br>
+
+        <label for="target_hours">Target Study Hours:</label>
+        <br>
+
+        <input
+            type="number"
+            id="target_hours"
+            name="target_hours"
+            value="{{ goal['target_hours'] }}"
+            min="1"
+            required
+        >
+
+        <br><br>
+
+        <button type="submit">Save Changes</button>
+
+    </form>
+
+    <br>
+
+    <a href="/goals">
+        <button type="button">Cancel</button>
+    </a>
+
+</body>
+
+</html>

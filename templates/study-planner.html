@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Planner</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/study-planner.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>Student Study Planner</h1>
+        <p class="subtitle">Plan your study sessions and stay organized.</p>
+
+        <nav>
+            <a href="/planner">Planner</a>
+            <a href="/goals">Goals</a>
+            <a href="/subjects">Subjects</a>
+            <a href="/profile">Profile</a>
+            <a href="/logout">Logout</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="stats">
+
+            <div class="stat-card">
+                <h3>Total Study Hours</h3>
+                <div class="stat-number">{{ total_hours }}</div>
+                <span>Hours studied</span>
+            </div>
+
+            <div class="stat-card">
+                <h3>This Week</h3>
+                <div class="stat-number">{{ weekly_hours }}</div>
+                <span>Hours this week</span>
+            </div>
+
+            <div class="stat-card">
+                <h3>Completed Sessions</h3>
+                <div class="stat-number">{{ completed_sessions }}</div>
+                <span>Sessions completed</span>
+            </div>
+
+        </section>
+
+        <section class="section">
+
+            <div class="section-header">
+                <div>
+                    <h2>My Study Sessions</h2>
+                    <p>Manage your upcoming and completed study sessions.</p>
+                </div>
+
+                <a href="/add-study" class="add-button">
+                    + Add Study Session
+                </a>
+            </div>
+
+            {% if sessions %}
+
+                {% for study in sessions %}
+
+                    <div class="session-card">
+
+                        <div class="session-header">
+                            <h3>{{ study["subject"] }}</h3>
+
+                            <span class="status">
+                                {{ study["status"] }}
+                            </span>
+                        </div>
+
+                        <p>
+                            <strong>Topic:</strong>
+                            {{ study["topic"] }}
+                        </p>
+
+                        <div class="session-details">
+
+                            <span>
+                                📅 {{ study["date"] }}
+                            </span>
+
+                            <span>
+                                🕐 {{ study["time"] }}
+                            </span>
+
+                            <span>
+                                ⏱ {{ study["duration"] }} hours
+                            </span>
+
+                        </div>
+
+                        <div class="session-buttons">
+
+                            <a href="/edit-study/{{ study['id'] }}"
+                               class="button edit-button">
+                                Edit
+                            </a>
+
+                            {% if study["status"] != "Completed" %}
+
+                                <form action="/complete-study/{{ study['id'] }}"
+                                      method="POST">
+
+                                    <button type="submit"
+                                            class="button complete-button">
+                                        Mark Completed
+                                    </button>
+
+                                </form>
+
+                            {% endif %}
+
+                            <form action="/delete-study/{{ study['id'] }}"
+                                  method="POST">
+
+                                <button type="submit"
+                                        class="button delete-button">
+                                    Delete
+                                </button>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+
+                {% endfor %}
+
+            {% else %}
+
+                <div class="empty-state">
+
+                    <div class="empty-icon">📚</div>
+
+                    <h3>No study sessions yet</h3>
+
+                    <p>
+                        Add your first study session to start planning your study time.
+                    </p>
+
+                    <a href="/add-study" class="add-button">
+                        + Add Study Session
+                    </a>
+
+                </div>
+
+            {% endif %}
+
+        </section>
+
+    </main>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add Study Session</title>
+</head>
+
+<body>
+
+    <h1>Add Study Session</h1>
+
+    <p>Plan your study session.</p>
+
+    <form action="/add-study" method="POST" onsubmit="return validateStudyForm()">
+
+        <label for="subject">Subject:</label>
+        <br>
+
+        <select id="subject" name="subject" required>
+            <option value="">Select Subject</option>
+            <option value="Python">Python</option>
+            <option value="Mathematics">Mathematics</option>
+            <option value="Physics">Physics</option>
+            <option value="Web Development">Web Development</option>
+        </select>
+
+        <br><br>
+
+        <label for="topic">Study Topic:</label>
+        <br>
+
+        <input
+            type="text"
+            id="topic"
+            name="topic"
+            placeholder="Example: Python Functions"
+        >
+
+        <br><br>
+
+        <label for="date">Study Date:</label>
+        <br>
+
+        <input
+            type="date"
+            id="date"
+            name="date"
+        >
+
+        <br><br>
+
+        <label for="time">Start Time:</label>
+        <br>
+
+        <input
+            type="time"
+            id="time"
+            name="time"
+        >
+
+        <br><br>
+
+        <label for="duration">Study Duration (hours):</label>
+        <br>
+
+        <input
+            type="number"
+            id="duration"
+            name="duration"
+            min="1"
+            placeholder="Example: 2"
+        >
+
+        <br><br>
+
+        <button type="submit">Save Study Session</button>
+
+    </form>
+
+    <script src="planner.js"></script>
+
+</body>
+
+</html>

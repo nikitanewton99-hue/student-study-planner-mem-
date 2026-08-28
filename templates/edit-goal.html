@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Study Goal</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f5f7;
+            color: #222;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: 60px auto;
+            padding: 0 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            margin-top: 0;
+            font-size: 32px;
+        }
+
+        .subtitle {
+            color: #777;
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin: 18px 0 7px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #555;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        button,
+        .cancel {
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 15px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        button {
+            background: #222;
+            color: white;
+            border: none;
+        }
+
+        button:hover {
+            background: #444;
+        }
+
+        .cancel {
+            border: 1px solid #ccc;
+            color: #222;
+            background: #f8f8f8;
+        }
+
+        .cancel:hover {
+            background: #eee;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>✏️ Edit Study Goal</h1>
+
+        <p class="subtitle">
+            Update your goal details and keep your study plan on track.
+        </p>
+
+        <form method="POST">
+
+            <label for="title">Goal Title</label>
+            <input
+                type="text"
+                id="title"
+                name="title"
+                value="{{ goal['title'] }}"
+                required
+            >
+
+            <label for="description">Description</label>
+            <textarea
+                id="description"
+                name="description"
+                required
+            >{{ goal['description'] }}</textarea>
+
+            <label for="target_hours">Target Study Hours</label>
+            <input
+                type="number"
+                id="target_hours"
+                name="target_hours"
+                value="{{ goal['target_hours'] }}"
+                min="1"
+                required
+            >
+
+            <div class="buttons">
+
+                <button type="submit">
+                    Save Changes
+                </button>
+
+                <a href="/goals" class="cancel">
+                    Cancel
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

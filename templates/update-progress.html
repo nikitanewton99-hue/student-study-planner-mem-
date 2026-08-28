@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Goal Progress</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f5f7;
+            color: #222;
+        }
+
+        .container {
+            max-width: 520px;
+            margin: 70px auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .icon {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            margin: 0 0 8px;
+            font-size: 30px;
+        }
+
+        .subtitle {
+            color: #777;
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 13px;
+            border: 1px solid #ccc;
+            border-radius: 9px;
+            font-size: 16px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #555;
+        }
+
+        .hint {
+            color: #888;
+            font-size: 13px;
+            margin-top: 7px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 13px;
+            border: none;
+            border-radius: 9px;
+            background: #222;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #444;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #222;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <div class="icon">📈</div>
+
+        <h1>Update Goal Progress</h1>
+
+        <p class="subtitle">
+            Keep track of how close you are to reaching your study goal.
+        </p>
+
+        <form method="POST">
+
+            <label for="progress">Current Progress</label>
+
+            <input
+                type="number"
+                id="progress"
+                name="progress"
+                min="0"
+                max="100"
+                placeholder="Enter percentage"
+                required
+            >
+
+            <p class="hint">
+                Enter a value between 0% and 100%.
+            </p>
+
+            <button type="submit">
+                Save Progress
+            </button>
+
+        </form>
+
+        <a href="/goals" class="back">
+            ← Back to Goals
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Weekly Study Planner</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/study-planner.css') }}">
+</head>
+
+<body>
+
+    <h1>Weekly Study Planner</h1>
+
+    <p>View your study sessions for the week.</p>
+
+    <hr>
+
+    <h2>Weekly Schedule</h2>
+
+    {% if sessions %}
+
+        {% for study in sessions %}
+
+            <div class="study-session">
+
+                <h3>{{ study["subject"] }}</h3>
+
+                <p><strong>Topic:</strong> {{ study["topic"] }}</p>
+
+                <p><strong>Date:</strong> {{ study["date"] }}</p>
+
+                <p><strong>Time:</strong> {{ study["time"] }}</p>
+
+                <p><strong>Duration:</strong> {{ study["duration"] }} hours</p>
+
+                <p><strong>Status:</strong> {{ study["status"] }}</p>
+
+            </div>
+
+            <hr>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p>No study sessions planned for this week.</p>
+
+    {% endif %}
+
+    <a href="/planner">
+        <button type="button">Back to Daily Planner</button>
+    </a>
+
+    <a href="/add-study">
+        <button type="button">Add Study Session</button>
+    </a>
+
+</body>
+
+</html>

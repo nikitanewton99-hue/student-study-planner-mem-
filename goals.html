@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Study Goals</title>
+</head>
+
+<body>
+
+    <h1>Study Goals</h1>
+
+    <p>Set your study goals and track your progress.</p>
+
+    <hr>
+
+    <h2>My Goals</h2>
+
+    {% if goals %}
+
+        {% for goal in goals %}
+
+            <div class="study-goal">
+
+                <h3>{{ goal["title"] }}</h3>
+
+                <p><strong>Description:</strong> {{ goal["description"] }}</p>
+               
+                <a href="/edit-goal/{{ goal['id'] }}">
+                    <button type="button">Edit Goal</button>
+                 </a>
+
+                <p><strong>Target Hours:</strong> {{ goal["target_hours"] }}</p>
+
+                <p><strong>Progress:</strong> {{ goal["progress"] }}%</p>
+               <form action="/update-goal-progress/{{ goal['id'] }}" method="POST">
+
+              <label for="progress-{{ goal['id'] }}">Progress:</label>
+
+              <input
+                 type="number"
+                 id="progress-{{ goal['id'] }}"
+                 name="progress"
+                 min="0"
+                max="100"
+             value="{{ goal['progress'] }}"
+              required
+        >
+
+    <button type="submit">Update Progress</button>
+
+</form>
+
+            </div>
+
+            <hr>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p>No study goals added yet.</p>
+
+    {% endif %}
+
+    <h2>Add a Study Goal</h2>
+
+    <form action="/goals" method="POST">
+
+        <label for="title">Goal Title:</label>
+        <br>
+
+        <input
+            type="text"
+            id="title"
+            name="title"
+            placeholder="Example: Complete Python course"
+            required
+        >
+
+        <br><br>
+
+        <label for="description">Description:</label>
+        <br>
+
+        <textarea
+            id="description"
+            name="description"
+            placeholder="Describe your study goal"
+            required
+        ></textarea>
+
+        <br><br>
+
+        <label for="target_hours">Target Study Hours:</label>
+        <br>
+
+        <input
+            type="number"
+            id="target_hours"
+            name="target_hours"
+            min="1"
+            required
+        >
+
+        <br><br>
+
+        <button type="submit">Add Goal</button>
+
+    </form>
+
+    <br>
+
+    <a href="/planner">
+        <button type="button">Back to Planner</button>
+    </a>
+
+</body>
+
+</html>
